@@ -15,11 +15,9 @@
     
 
         <?php
-
         session_start();
-        
-        require_once 'func.php';
 
+        require_once 'func.php';
 
         if (isset($_POST['password']) && isset($_POST['login'])) {
             if (existsUser($_POST['login'])) {
