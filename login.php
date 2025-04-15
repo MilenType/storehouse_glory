@@ -1,3 +1,7 @@
+<?php
+        session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -14,8 +18,7 @@
     <main>
     
 
-        <?php
-        session_start();
+    <?php
 
         require_once 'func.php';
 

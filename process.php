@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 
 $username = $_POST['login'] ?? null;
 $password = $_POST['password'] ?? null;
@@ -15,9 +19,6 @@ if (null !== $username || null !== $password) {
 
     // Если пароль из базы совпадает с паролем из формы
     if ($password === $users[$username]['password'] && (in_array($username, array_keys($users)))) {
-
-         // Стартуем сессию:
-        session_start(); 
         
    	 // Пишем в сессию информацию о том, что мы авторизовались:
         $_SESSION['auth'] = true; 
