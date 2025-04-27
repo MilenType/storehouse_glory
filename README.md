@@ -21,3 +21,33 @@
 
 ### Сделана возможность выхода из личного кабинета. 
 При выходе пользователю становится доступна только главная страница сайта.
+
+{
+    "users": [
+        {
+            "id": 0,
+            "name": "John",
+            "login": "admin",
+            "password": "admin"
+            
+        },
+        {
+            "id": 1,
+            "name": "Mery",
+            "login": "user1",
+            "password": "123"
+        },
+        {
+            "id": 2,
+            "name": "Sara",
+            "login": "user2",
+            "password": "456"
+        },
+        {
+            "id": 3,
+            "name": "Ben",
+            "login": "user3",
+            "password": "789"
+        }
+    ]
+}

@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once 'func.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -8,9 +13,6 @@
 </head>
 
 <?php
-session_start();
-require_once 'func.php';
-
 function getDiffDays($birthday_string)
 {
     $today = new DateTime();
@@ -96,17 +98,8 @@ function getDiffDays($birthday_string)
             <?php setUserData($_SESSION['auth'], $_POST['birthday']);
             $user_birthday = getUserData($_SESSION['auth']);
 
-            if ($current_date === $user_birthday) {?>
-            <div class="greed"><?php echo "<br> Поздравляем с Днём рождения! <br> Сегодня для вас скидка 5% на все услуги" . "<br>"; ?></div>
-            <?php } else { ?>
-                <div class="daysleft"><?php echo getDiffDays($user_birthday) . "<br>"; ?></div>
-
-            <?php }} ?> 
-
-
-            <?php
+         }
         
-
         $action_time = getTimeSale();
         $hour = intdiv(($action_time), 3600);
         $modhour = $action_time - $hour * 3600;
@@ -119,19 +112,22 @@ function getDiffDays($birthday_string)
             <div class="sale"> <?php echo "<br> До конца персональной акции осталось: " . $hour . " ч. " . $min . " мин. " . $sec . " сек. <br>"; ?></div>
             <?php } else { ?>
             <div class="nonsale"> <?php echo "Акция завершена";}?></div>
-        </div>            
+        </div>     
+
+        <?php if (!$user_birthday): ?>
 
         <form  class="calender" action="index.php" method="post">
             <p><br>Для получения персональной акции введите дату рождения</p><br>
             <input name="birthday" type="date" placeholder="День">
             <button name="submit" type="submit">Ввести дату рождения</button>
         </form>
-
+        
+        <?php endif ?>
 
         <?php
         $services = [
             ["name" => "Классический массаж", "price" => 1500],
-            ["name" => "Антицеллюлитный массаж", "price" => 1800],
+            ["name" => "Антицеллюлитный массаж", "price" => 1800], 
             ["name" => "Тайский массаж", "price" => 2500],
             ["name" => "Спортивный массаж", "price" => 2200],
             ["name" => "Расслабляющий массаж", "price" => 1700]
